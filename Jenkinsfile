@@ -32,14 +32,14 @@ pipeline {
         stage('Build Docker image'){
             steps {
                 container('docker'){
-                    sh 'docker build -t vlad1020/${params.IMAGE}:latest ./${params.IMAGE}/'
+                    sh "docker build -t vlad1020/${params.IMAGE}:latest ./${params.IMAGE}/"
                 }
             }
         }
         stage('Push to Docker Hub'){
             steps {
                 container('docker'){
-                    sh 'docker push vlad1020/${params.IMAGE}:latest'
+                    sh "docker push vlad1020/${params.IMAGE}:latest"
                 }
             }
         }
