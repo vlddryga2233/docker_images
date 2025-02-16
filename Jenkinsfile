@@ -9,9 +9,12 @@ pipeline {
             spec:
               containers:
               - name: docker
-                image: docker
-                command:
-                - cat
+                image: docker:20.10-dind
+                securityContext:
+                    privileged: true
+                env:
+                - name: DOCKER_TLS_CERTDIR
+                  value: ""
                 tty: true
             '''
         }
