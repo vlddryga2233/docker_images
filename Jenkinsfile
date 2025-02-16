@@ -50,6 +50,9 @@ pipeline {
             }
         }
         stage('Push to Docker Hub'){
+            when {
+                branch 'main'
+            }
             steps {
                 container('docker'){
                     sh "docker push vlad1020/${params.IMAGE}:latest"
